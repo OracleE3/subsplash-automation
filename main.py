@@ -80,9 +80,10 @@ class Org:
 
         # Logging in
         try:
-            browser.find_element("id", 'Email').send_keys(self.user)
-            browser.find_element("id", 'Password').send_keys(self.passwd)
-            browser.find_element("id", 'js-login-form-submit').click()
+            browser.find_element(By.ID, "email").send_keys(self.user)
+            browser.find_element(By.ID, "password").send_keys(self.passwd)
+            log_in_btn = browser.find_element(By.CSS_SELECTOR, "body > div.flex.min-h-screen.w-screen.flex-col.items-center.justify-center.p-3xl > main > div > form > button")
+            log_in_btn.click()
             log("Logged in.")
         except Exception as e:
             log("Something went wrong! Unable to login.")
