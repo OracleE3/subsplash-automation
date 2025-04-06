@@ -1,0 +1,12 @@
+[project]
+authors = ["Oracle-E3 <daniel_cain8@outlook.com>"]
+channels = ["conda-forge"]
+description = "Add a short description here"
+name = "subsplashuploader"
+platforms = ["win-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+selenium = ">=4.31.0,<5"

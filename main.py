@@ -80,9 +80,9 @@ class Org:
 
         # Logging in
         try:
-            browser.find_element_by_id('Email').send_keys(self.user)
-            browser.find_element_by_id('Password').send_keys(self.passwd)
-            browser.find_element_by_id('js-login-form-submit').click()
+            browser.find_element("id", 'Email').send_keys(self.user)
+            browser.find_element("id", 'Password').send_keys(self.passwd)
+            browser.find_element("id", 'js-login-form-submit').click()
             log("Logged in.")
         except Exception as e:
             log("Something went wrong! Unable to login.")
@@ -94,7 +94,7 @@ class Org:
         try:
             x = "//div[text()='Media']"
             WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.XPATH, x)))
-            browser.find_element_by_xpath(x).click()
+            browser.find_element("xpath", x).click()
         except Exception as e:
             log("Something went wrong! Unable to open the on-demand page. Maybe we weren't able to login?")
             log(e)
@@ -104,9 +104,9 @@ class Org:
         try:
             xpath = "//li[@data-callout-id='global-nav-media-on-demand']"
 	    #WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.ID, "ember60")))
-            #browser.find_element_by_id("ember60").click()
+            #browser.find_element("id", "ember60").click()
             WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.XPATH, xpath)))
-            browser.find_element_by_xpath(xpath).click()
+            browser.find_element("xpath", xpath).click()
             log("Opened the on-demand page.")
         except Exception as e:
             log("Something went wrong! Unable to open the on-demand page. Maybe we weren't able to login?")
@@ -117,7 +117,7 @@ class Org:
         # Clicking the create media item button
         try:
             WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.XPATH, "//button[@data-ga-event-action='create media item']")))
-            browser.find_element_by_xpath("//button[@data-ga-event-action='create media item']").click()
+            browser.find_element("xpath", "//button[@data-ga-event-action='create media item']").click()
             log("Clicked the create media item button.")
         except Exception as e:
             log("Something went wrong! Unable to click the create media item button.")
@@ -128,7 +128,7 @@ class Org:
         # Typing in the Media title
         try:
             WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.XPATH, "//label/input[@type='text']")))
-            browser.find_element_by_xpath("//label/input[@type='text']").send_keys(name)
+            browser.find_element("xpath", "//label/input[@type='text']").send_keys(name)
             log("Typed in the media title.")
         except Exception as e:
             log("Something went wrong! Unable to type in the media title.")
@@ -158,7 +158,7 @@ class Org:
         # clicking the submit button
         try:
             WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.XPATH, "//button[@data-ga-event-action='create']")))
-            browser.find_element_by_xpath("//button[@data-ga-event-action='create']").click()
+            browser.find_element("xpath", "//button[@data-ga-event-action='create']").click()
             log("Clicked the create button.")
         except Exception as e:
             log("Something went wrong! Unable to click the create button.")
@@ -169,7 +169,7 @@ class Org:
         # inputting the date
         try:
             WebDriverWait(browser, 60).until(EC.presence_of_element_located((By.XPATH, "//input[@placeholder='MM/DD/YYYY']")))
-            browser.find_element_by_xpath("//input[@placeholder='MM/DD/YYYY']").send_keys(videocreationdate.strftime("%m/%d/%Y"))
+            browser.find_element("xpath", "//input[@placeholder='MM/DD/YYYY']").send_keys(videocreationdate.strftime("%m/%d/%Y"))
             log("Inputted video date.")
         except Exception as e:
             log("Something went wrong! Unable to input video date.")
@@ -179,7 +179,7 @@ class Org:
 
         # uploading the video
         try:
-            browser.find_element_by_xpath("//label[@class='sui-media-uploader__content']/div/input[@type='file']").send_keys(video)
+            browser.find_element("xpath", "//label[@class='sui-media-uploader__content']/div/input[@type='file']").send_keys(video)
             log("Beginning to upload video.")
         except Exception as e:
             log("Something went wrong! Unable to begin upload of the video.")
@@ -214,8 +214,8 @@ class Org:
         # press the publish button
         try:
             y = "//div[(contains(string(), 'Publish') and not(contains(string(), 'after')))]"
-            #browser.find_element_by_xpath("//div/span/button").click()
-            browser.find_element_by_xpath(y).click()
+            #browser.find_element("xpath", "//div/span/button").click()
+            browser.find_element("xpath", y).click()
         except Exception as e:
             log("Something went wrong! Unable to press the publish button. Not quitting!")
             log(e)
